@@ -15,8 +15,8 @@ SHELL = /bin/sh
 ## VARIABLES ##_________________________________________________ sources files #
 
 SRCS			=	ft_printf/ft_char_conversion.c \
-					ft_printf/ft_num_conversion.c \
-					ft_printf/ft_printf.c
+				ft_printf/ft_num_conversion.c \
+				ft_printf/ft_printf.c
 			
 INCS 			=	libftprintf.h
 
@@ -28,13 +28,13 @@ DIR_OBJ 		= 	obj
 
 #_________________________________________________________tools && path macros #
 
-CC				=	gcc
+CC			=	gcc
 
 CFLAGS 			=	-g
 
 CCFLAGS			=	-Wall -Wextra -Werror
 
-AR				=	ar rcs
+AR			=	ar rcs
 
 ## RULES ## ________________________________________________ compilation rules #
 
