@@ -27,7 +27,7 @@ static int	ft_convert(const char *format, va_list arg)
 
 	if ((ft_ptr)[(int)*format] == NULL)
 	{
-		ft_putstr_fd("... Calling a flag that doesn't exist!? ...", 1);
+		ft_putstr_fd("* Calling a flag that doesn't exist!? *", 1);
 		return (1);
 	}
 	return ((ft_ptr[(int)*format])(arg));
