@@ -20,7 +20,6 @@ int		ft_printf(const char *format, ...);
 int		ft_putstr_va_arg(va_list arg);
 int		ft_putchar_va_arg(va_list arg);
 int		ft_putnbr_va_arg(va_list arg);
-int		ft_base_ten_va_arg(va_list arg);
 int		ft_unsigned_va_arg(va_list arg);
 int		ft_lowerhex_va_arg(va_list arg);
 int		ft_upperhex_va_arg(va_list arg);
