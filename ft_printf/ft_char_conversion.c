@@ -6,11 +6,11 @@
 /*   By: tmercier <tmercier@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/03 13:01:27 by tmercier      #+#    #+#                 */
-/*   Updated: 2022/02/04 15:17:17 by tmercier      ########   odam.nl         */
+/*   Updated: 2022/02/28 13:38:48 by tmercier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf.h"
+#include <libftprintf.h>
 
 int	ft_putchar_va_arg(va_list arg)
 {

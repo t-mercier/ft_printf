@@ -6,7 +6,7 @@
 #    By: tmercier <tmercier@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/12/02 17:13:26 by tmercier      #+#    #+#                  #
-#    Updated: 2022/02/04 15:10:25 by tmercier      ########   odam.nl          #
+#    Updated: 2022/02/28 13:49:43 by tmercier      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ SRCS			=	ft_atoi.c \
 					ft_tolower.c \
 					ft_toupper.c
 
-INCS			=	libft.h
+INCS			=	-I ../include
 
 #_________________________________________________________________ path macros #
 
@@ -86,8 +86,6 @@ NODIR_SRC 		=	$(notdir $(SRCS))
 
 OBJS 			=	$(addprefix $(DIR_OBJ)/, $(SRCS:c=o))
 
-INC_DIRS 		= 	$(addprefix -I, $(INCS))
-
 .PHONY: clean fclean re graphic
 
 all: $(NAME)
@@ -96,16 +94,18 @@ $(NAME):  $(OBJS)
 	@$(AR) $(NAME) $(OBJS)
 	@make graphic
 
-$(DIR_OBJ)/%.o: %.c $(INCS)
+$(DIR_OBJ)/%.o: %.c
 	@mkdir -p $(@D)
-	@$(CC) -o $@ -c $< $(CFLAGS) $(CCFLAGS) $(INC_DIRS)
+	@$(CC) -o $@ -c $< $(CFLAGS) $(CCFLAGS) $(INCS)
 	@echo "\033[96m	$@\033[0m"
 
 clean:
 	@if [ -d "$(DIR_OBJ)" ]; then rm -r $(DIR_OBJ); fi
+	@printf "$(LIGHT_RED)\n-> obj files removed.\n"
 
 fclean: clean
 	@rm -rf $(NAME)
+	@printf "\n$(LIGHT_RED)-> $(NAME) removed.\n\n"
 
 re: fclean all
 

@@ -6,14 +6,14 @@
 /*   By: tmercier <tmercier@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/18 13:07:03 by tmercier      #+#    #+#                 */
-/*   Updated: 2022/02/04 15:19:56 by tmercier      ########   odam.nl         */
+/*   Updated: 2022/02/28 13:32:21 by tmercier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
 
-# include "libft/libft.h"
+# include "libft.h"
 # include <unistd.h>
 
 int		ft_printf(const char *format, ...);

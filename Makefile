@@ -6,7 +6,7 @@
 #    By: tmercier <tmercier@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/12/02 17:13:26 by tmercier      #+#    #+#                  #
-#    Updated: 2022/02/04 15:22:56 by tmercier      ########   odam.nl          #
+#    Updated: 2022/02/28 13:49:32 by tmercier      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,10 @@ SHELL = /bin/sh
 ## VARIABLES ##_________________________________________________ sources files #
 
 SRCS			=	ft_printf/ft_char_conversion.c \
-				ft_printf/ft_num_conversion.c \
-				ft_printf/ft_printf.c
+					ft_printf/ft_num_conversion.c \
+					ft_printf/ft_printf.c
 			
-INCS 			=	libftprintf.h
+INCS 			=	-I ./include
 
 #_________________________________________________________________ path macros #
 
@@ -28,13 +28,11 @@ DIR_OBJ 		= 	obj
 
 #_________________________________________________________tools && path macros #
 
-CC			=	gcc
-
-CFLAGS 			=	-g
+CC				=	gcc
 
 CCFLAGS			=	-Wall -Wextra -Werror
 
-AR			=	ar rcs
+AR				=	ar rcs
 
 ## RULES ## ________________________________________________ compilation rules #
 
@@ -46,15 +44,13 @@ NODIR_SRC 		=	$(notdir $(SRCS))
 
 OBJS 			=	$(addprefix ft_printf/$(DIR_OBJ)/, $(SRCS:c=o))
 
-INC_DIRS 		= 	$(addprefix -I, $(INCS))
-
 .PHONY: clean fclean re graphic
 
 all: $(NAME)
 
-ft_printf/$(DIR_OBJ)/%.o: %.c $(INCS)
+ft_printf/$(DIR_OBJ)/%.o: %.c
 	@mkdir -p $(@D)
-	@$(CC) -o $@ -c $< $(CFLAGS) $(CCFLAGS) $(INC_DIRS)
+	@$(CC) $(CFLAGS) -o $@ -c $< $(INCS)
 	@echo "\033[96m	$@\033[0m"
 
 $(NAME): $(OBJS)
@@ -68,10 +64,12 @@ clean:
 	@if [ -d "$(LIBFT)/obj" ]; then rm -r $(LIBFT)/obj; fi
 	@if [ -d "ft_printf/$(DIR_OBJ)" ]; \
 	then rm -r ft_printf/$(DIR_OBJ); fi
+	@printf "$(LIGHT_RED)\n-> obj files removed.\n"
 
 fclean: clean
 	@rm -rf $(NAME)
 	@rm -rf $(LIBFT)/libft.a
+	@printf "\n$(LIGHT_RED)-> $(NAME) removed.\n\n"
 
 re: fclean all
 
